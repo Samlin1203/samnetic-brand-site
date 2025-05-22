@@ -12,16 +12,10 @@
       margin-bottom: 20px;
     }
 
-    .branding img.logo {
-      width: 360px;
-      height: auto;
-    }
-
+    .branding img.logo,
     .branding img.mascot {
-      width: 250px;
+      max-width: 17vw;
       height: auto;
-      //border-radius: 12px;
-      //box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     body, html {
@@ -138,11 +132,13 @@
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
+      .branding {
+        flex-direction: column;
       }
-      .cta {
-        width: 100%;
+
+      .branding img.logo,
+      .branding img.mascot {
+        max-width: 70vw;
       }
     }
   </style>
@@ -154,7 +150,7 @@
       <img class="logo" src="logo.png" alt="Samnetic Logo"/>
       <img class="mascot" src="mascot.png" alt="Samnetic Mascot"/>
     </div>
-    <h1>Samnetic</h1>
+    <h1>山姆創磁</h1>
     <p>打造全方位科技品牌，啟動未來無限可能。從創意、技術到策略，我們助你全面升級。</p>
     <button class="cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">聯絡我們</button>
   </header>
