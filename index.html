@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Samnetic 品牌介紹</title>
   <style>
+    .branding {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .branding img.logo {
+      width: 360px;
+      height: auto;
+    }
+
+    .branding img.mascot {
+      width: 250px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
     body, html {
       margin: 0;
       padding: 0;
@@ -31,13 +50,6 @@
       padding: 20px;
     }
 
-    header img {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
     h1 {
       font-size: 3em;
       margin-bottom: 0.2em;
@@ -55,7 +67,7 @@
       padding: 12px 28px;
       font-size: 1em;
       background: linear-gradient(135deg, #a278b5, #ce99d6);
-      color: #4b3054;
+      color: white;
       border: none;
       border-radius: 40px;
       cursor: pointer;
@@ -80,8 +92,8 @@
     }
 
     .feature-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       border-radius: 12px;
       padding: 20px;
       backdrop-filter: blur(10px);
@@ -109,7 +121,7 @@
 
     input[type="submit"] {
       background-color: #a278b5;
-      color: #4b3054;
+      color: white;
       cursor: pointer;
       transition: background 0.3s;
     }
@@ -138,7 +150,10 @@
 <body>
   <canvas id="bg"></canvas>
   <header>
-    <img src="logo.png" alt="Samnetic Logo"/>
+    <div class="branding">
+      <img class="logo" src="logo.png" alt="Samnetic Logo"/>
+      <img class="mascot" src="mascot.png" alt="Samnetic Mascot"/>
+    </div>
     <h1>Samnetic</h1>
     <p>打造全方位科技品牌，啟動未來無限可能。從創意、技術到策略，我們助你全面升級。</p>
     <button class="cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">聯絡我們</button>
@@ -163,7 +178,7 @@
 
   <section id="contact" class="contact">
     <h2>聯絡我們</h2>
-    <form action="https://formspree.io/f/moqggryl" method="POST">
+    <form action="https://formspree.io/f/xovdzend" method="POST">
       <input type="text" name="name" placeholder="你的名字" required>
       <input type="email" name="email" placeholder="你的信箱" required>
       <textarea name="message" placeholder="想對我們說什麼..." rows="5" required></textarea>
@@ -203,7 +218,7 @@
       for (let p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = '#a278b5';
+        ctx.fillStyle = '#cba8db';
         ctx.fill();
         p.x += p.dx;
         p.y += p.dy;
