@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samnetic 品牌介紹</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', 'Noto Sans TC', sans-serif;
+      background-color: #f5f1f8;
+      color: #4b3054;
+      overflow-x: hidden;
+    }
+
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      color: #a278b5;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #5b4d5e;
+      max-width: 600px;
+    }
+
+    .cta {
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 1em;
+      background: linear-gradient(135deg, #a278b5, #ce99d6);
+      color: #4b3054;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: scale(1.1);
+    }
+
+    section.features, section.contact {
+      padding: 60px 20px;
+      background-color: #fefbff;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #a278b5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1em;
+    }
+
+    input[type="submit"] {
+      background-color: #a278b5;
+      color: #4b3054;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #ce99d6;
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      .cta {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <header>
+    <img src="logo.png" alt="Samnetic Logo"/>
+    <h1>Samnetic</h1>
+    <p>打造全方位科技品牌，啟動未來無限可能。從創意、技術到策略，我們助你全面升級。</p>
+    <button class="cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">聯絡我們</button>
+  </header>
+
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <h2>專業技術</h2>
+        <p>從 AI 到 Web，全方位提供數位解決方案，量身打造屬於你的科技優勢。</p>
+      </div>
+      <div class="feature-card">
+        <h2>品牌策略</h2>
+        <p>整合行銷與品牌定位，幫助你建立獨特且有影響力的市場形象。</p>
+      </div>
+      <div class="feature-card">
+        <h2>未來導向</h2>
+        <p>持續追求創新，專注於量子思維與未來科技的應用。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>聯絡我們</h2>
+    <form action="https://formspree.io/f/moqggryl" method="POST">
+      <input type="text" name="name" placeholder="你的名字" required>
+      <input type="email" name="email" placeholder="你的信箱" required>
+      <textarea name="message" placeholder="想對我們說什麼..." rows="5" required></textarea>
+      <input type="submit" value="送出訊息">
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Samnetic | All rights reserved
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const particles = [];
+    for (let i = 0; i < 150; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 1,
+        dy: (Math.random() - 0.5) * 1
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#a278b5';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
